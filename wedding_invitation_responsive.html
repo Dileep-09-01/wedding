@@ -118,8 +118,8 @@ body { overflow-x: hidden; }
  Hero subtitle: Wedding Invitation
  Main wedding date and time for the countdown: 13 November 2026, 5:00 AM IST
  Venue name: Sri Chowdeswari Devi Devanga Kalyana Mandapam
- Venue address: Battalapalli Road, Dharmavaram, Sri Sathya Sai district
- Google Maps link: https://www.google.com/maps/search/?api=1&query=Sri+Chowdeswari+Devi+Devanga+Kalyana+Mandapam+Battalapalli+Road+Dharmavaram+Sri+Sathya+Sai+district
+ Venue address: Bathalapalli Road, Dharmavaram, Sri Sathya Sai district
+ Google Maps link: https://www.google.com/maps/search/?api=1&query=Sri+Chowdeswari+Devi+Devanga+Kalyana+Mandapam+Bathalapalli+Road+Dharmavaram+Sri+Sathya+Sai+district
  Dress code: skip
  Bride one-line bio: skip
  Groom one-line bio: skip
@@ -225,6 +225,11 @@ html.js .rv.in{opacity:1;transform:none}
 .flash.go{animation:flash .55s ease-out forwards}
 @keyframes flash{0%{opacity:0}30%{opacity:.85}100%{opacity:0}}
 .env-hint{margin-top:30px;font:500 15px/1.4 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-d)}
+.music-toggle{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:140;width:50px;height:50px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:50%;background:rgba(255,252,246,.96);color:var(--gold-d);box-shadow:0 4px 14px rgba(143,106,31,.24)}
+.music-toggle svg{width:21px;height:21px;fill:currentColor}
+.music-toggle .pause-icon{display:none}
+.music-toggle[aria-pressed="true"] .play-icon{display:none}
+.music-toggle[aria-pressed="true"] .pause-icon{display:block}
 
 /* ===================== 5. HERO (artwork background) ===================== */
 .hero{position:relative;z-index:2;width:100%;max-width:560px;margin:0 auto;min-height:max(100vh,760px);min-height:max(100svh,760px);overflow:hidden;text-align:center;background:var(--ivory)}
@@ -508,6 +513,11 @@ html.rm #fx,html.rm #glow{display:none!important}
   <div class="flash" id="flash"></div>
 </div>
 
+<audio id="weddingSong" src="cutted.mp3" preload="none" loop></audio>
+<button class="music-toggle" id="musicToggle" type="button" aria-label="Play wedding song" aria-pressed="false" title="Play wedding song">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path class="play-icon" d="M8 5v14l11-7z"/><path class="pause-icon" d="M7 5h4v14H7zM15 5h4v14h-4z"/></svg>
+</button>
+
 <!-- ===================== EFFECT LAYERS ===================== -->
 <div id="fx" aria-hidden="true"></div>
 <canvas id="glow" aria-hidden="true"></canvas>
@@ -598,13 +608,13 @@ html.rm #fx,html.rm #glow{display:none!important}
           </div>
           <div class="card vcard rv">
             <svg class="ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29C9 21 6 16 6 12a10 10 0 0 1 20 0c0 4-3 9-10 17z"/><circle cx="16" cy="12" r="3.5"/></svg>
-            <h3>Venue</h3><p>Sri Chowdeswari Devi Devanga Kalyana Mandapam</p><p class="s">Battalapalli Road, Dharmavaram, Sri Sathya Sai district</p>
+            <h3>Venue</h3><p>Sri Chowdeswari Devi Devanga Kalyana Mandapam</p><p class="s">Bathalapalli Road, Dharmavaram, Sri Sathya Sai district</p>
           </div>
         </div>
         <div class="btns rv">
           <button class="btn" type="button" id="calBtn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>Add to Calendar</button>
-          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Sri+Chowdeswari+Devi+Devanga+Kalyana+Mandapam+Battalapalli+Road+Dharmavaram+Sri+Sathya+Sai+district" target="_blank" rel="noopener">
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Sri+Chowdeswari+Devi+Devanga+Kalyana+Mandapam+Bathalapalli+Road+Dharmavaram+Sri+Sathya+Sai+district" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c-5-6-7-10-7-13a7 7 0 0 1 14 0c0 3-2 7-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>Get Directions</a>
         </div>
         <div class="map rv" id="mapBox">
@@ -629,7 +639,7 @@ html.rm #fx,html.rm #glow{display:none!important}
                 <dt>Date</dt><dd>12 Nov 2026</dd>
                 <dt>Day</dt><dd>Thursday</dd>
                 <dt>Time</dt><dd>7:05 PM (Dinner at 7:30 PM)</dd>
-                <dt>Venue</dt><dd>Sri Chowdeswari Devi Devanga Kalyana Mandapam, Battalapalli Road, Dharmavaram, Sri Sathya Sai district</dd>
+                <dt>Venue</dt><dd>Sri Chowdeswari Devi Devanga Kalyana Mandapam, Bathalapalli Road, Dharmavaram, Sri Sathya Sai district</dd>
               </dl>
             </div>
           </article>
@@ -641,9 +651,9 @@ html.rm #fx,html.rm #glow{display:none!important}
                 <dt>Date</dt><dd>13 Nov 2026</dd>
                 <dt>Day</dt><dd>Friday</dd>
                 <dt>Time</dt><dd>5:00 AM to 6:30 AM, Tula Lagna Pushkaramsa muhurtham</dd>
-                <dt>Venue</dt><dd>Sri Chowdeswari Devi Devanga Kalyana Mandapam, Battalapalli Road, Dharmavaram, Sri Sathya Sai district</dd>
+                <dt>Venue</dt><dd>Sri Chowdeswari Devi Devanga Kalyana Mandapam, Bathalapalli Road, Dharmavaram, Sri Sathya Sai district</dd>
               </dl>
-              <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Sri+Chowdeswari+Devi+Devanga+Kalyana+Mandapam+Battalapalli+Road+Dharmavaram+Sri+Sathya+Sai+district" target="_blank" rel="noopener">Get Directions</a>
+              <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Sri+Chowdeswari+Devi+Devanga+Kalyana+Mandapam+Bathalapalli+Road+Dharmavaram+Sri+Sathya+Sai+district" target="_blank" rel="noopener">Get Directions</a>
             </div>
           </article>
         </div>
@@ -672,7 +682,7 @@ html.rm #fx,html.rm #glow{display:none!important}
       <p class="fn rv">Vennela &amp; Pradeep</p>
       <p class="fd rv">13 November 2026</p>
       <p class="fv rv">Sri Chowdeswari Devi Devanga Kalyana Mandapam</p>
-      <p class="fa rv">Battalapalli Road, Dharmavaram, Sri Sathya Sai district</p>
+      <p class="fa rv">Bathalapalli Road, Dharmavaram, Sri Sathya Sai district</p>
       <div class="div rv" style="margin-top:26px"><i></i><svg aria-hidden="true"><use href="#lotus"/></svg><i></i></div>
       <p class="fm rv">Your presence and blessings will be our joy.</p>
       <p class="ff rv"><span>With the blessings of Smt. S. Gangamma and Sri S. Adinarayana garu.</span><span>Invited by Smt. Sandamuri Lakshmi Devi and Sri Sandamuri Gopal.</span></p>
@@ -715,13 +725,29 @@ if(RM) root.classList.add('rm');
 
 /* ---------- 1. FIXED DETAILS (copied exactly) ---------- */
 var VENUE='Sri Chowdeswari Devi Devanga Kalyana Mandapam';
-var ADDR='Battalapalli Road, Dharmavaram, Sri Sathya Sai district';
-var MAP='https://www.google.com/maps/search/?api=1&query=Sri+Chowdeswari+Devi+Devanga+Kalyana+Mandapam+Battalapalli+Road+Dharmavaram+Sri+Sathya+Sai+district';
+var ADDR='Bathalapalli Road, Dharmavaram, Sri Sathya Sai district';
+var MAP='https://www.google.com/maps/search/?api=1&query=Sri+Chowdeswari+Devi+Devanga+Kalyana+Mandapam+Bathalapalli+Road+Dharmavaram+Sri+Sathya+Sai+district';
 /* Countdown target: 13 November 2026, 5:00 AM IST (fixed +05:30 offset, never the visitor's time zone) */
 var TARGET=Date.UTC(2026,10,13,5,0,0)-(5*60+30)*60000;
 
 /* ---------- 2. OPENING REVEAL ---------- */
 var env=$('#env'),seal=$('#seal'),opening=false,started=false;
+var song=$('#weddingSong'),musicToggle=$('#musicToggle');
+function syncMusic(){
+  var playing=!song.paused&&!song.ended;
+  musicToggle.setAttribute('aria-pressed',playing?'true':'false');
+  musicToggle.setAttribute('aria-label',playing?'Pause wedding song':'Play wedding song');
+  musicToggle.title=playing?'Pause wedding song':'Play wedding song';
+}
+function playSong(){
+  var playback=song.play();
+  if(playback&&typeof playback.catch==='function')playback.catch(syncMusic);
+}
+musicToggle.addEventListener('click',function(){
+  if(song.paused)playSong();else song.pause();
+});
+song.addEventListener('play',syncMusic);
+song.addEventListener('pause',syncMusic);
 function spawnBurst(){
   var b=$('#burst'),i,s,a,d;
   for(i=0;i<22;i++){
@@ -734,6 +760,7 @@ function spawnBurst(){
 }
 function openInvite(){
   if(opening) return; opening=true;
+  playSong();
   if(RM){env.style.display='none';start();return}
   seal.classList.add('glow');                                   /* 0ms: seal glows        */
   $('#ring').classList.add('go');                               /* 0ms: ring of light     */
